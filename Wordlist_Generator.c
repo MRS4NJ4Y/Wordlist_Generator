@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<conio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -45,7 +46,7 @@ int main() {
     printf("3. Symbols\n");
     printf("4. Numbers and Characters\n");
     printf("5. Numbers and Symbols\n");
-    printf("6. Numbers, Characters, and Symbols\n");
+    printf("6. Numbers, Characters and Symbols\n");
     printf("Enter option: ");
     scanf("%d", &option);
 
@@ -77,7 +78,6 @@ int main() {
     }
 
     get_available_filename("wordlist", filename, sizeof(filename));
-
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
         printf("Error opening file!\n");
@@ -85,6 +85,7 @@ int main() {
     }
 
     printf("\nStarting wordlist generation...\n");
+    printf("Please Wait...\n");
     for (int length = 1; length <= max_length; length++) {
         generate_wordlist(charset, "", length, file, &word_count);
         show_animation(word_count);
@@ -93,6 +94,8 @@ int main() {
     fclose(file);
     printf("\nTotal words generated: %d\n", word_count);
     printf("Wordlist generated and saved to %s\n\n", filename);
+    printf("Press any key to exit...");
+    getch();
 
     return 0;
 }
